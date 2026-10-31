@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install INOVEX Tasks</title>
+<meta name="theme-color" content="#121212">
+<meta name="robots" content="noindex, nofollow">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<style>
+  :root{--bg:#EEF0F2;--surface:#fff;--ink:#16181B;--muted:#5A5F67;--line:#D9DCE1;--gold:#C9A227;--gold-ink:#86690C}
+  @media (prefers-color-scheme:dark){:root{--bg:#0E0F10;--surface:#17191B;--ink:#E7E8EA;--muted:#A1A6AE;--line:#2A2D31;--gold:#D4AF37;--gold-ink:#E2C25B}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 'Segoe UI',Roboto,Arial,sans-serif}
+  header{background:#121212;color:#ECEDEF;padding:28px 16px}
+  .wrap{max-width:860px;margin:0 auto;padding:0 16px}
+  header .wrap{display:flex;gap:16px;align-items:center;padding:0}
+  header img{width:64px;height:64px;border-radius:14px}
+  h1{margin:0;font-size:24px} header p{margin:2px 0 0;color:#A3A8B0}
+  .lang{margin-inline-start:auto;border:1px solid #3A3E43;background:transparent;color:#ECEDEF;border-radius:8px;padding:6px 12px;cursor:pointer}
+  main{padding:20px 0 40px}
+  .cta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:18px}
+  .btn{display:inline-block;padding:10px 18px;border-radius:8px;background:var(--gold);color:#121212;font-weight:700;border:0;cursor:pointer;text-decoration:none;font-size:15px}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card.mine{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 22%,transparent)}
+  .card h2{margin:0 0 6px;font-size:17px;display:flex;gap:8px;align-items:center}
+  .card ol{margin:0;padding-inline-start:20px}
+  .tag{font-size:11px;font-weight:700;color:var(--gold-ink);border:1px solid var(--gold);border-radius:999px;padding:0 8px}
+  .note{color:var(--muted);font-size:13.5px;margin-top:16px}
+  [hidden]{display:none!important}
+  @media (max-width:640px){.grid{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><img src="/icons/icon-192.png" alt="INOVEX"><div><h1 data-t="title">Install INOVEX Tasks</h1><p data-t="sub">Use the Task Manager as an app on your phone or computer.</p></div>
+  <button class="lang" id="lang" type="button">العربية</button></div></header>
+<main class="wrap">
+  <div class="cta">
+    <button class="btn" id="installBtn" hidden data-t="install">Install the app</button>
+    <span id="installed" hidden data-t="done">The app is installed. Look for “INOVEX Tasks” on your home screen or apps list.</span>
+    <a class="btn ghost" href="/" data-t="open">Open without installing</a>
+  </div>
+  <div class="grid">
+    <section class="card" data-os="ios"><h2>iPhone / iPad <span class="tag" data-t="yours" hidden>Your device</span></h2><ol>
+      <li data-t="ios1">Open this page in <b>Safari</b>.</li>
+      <li data-t="ios2">Tap the <b>Share</b> button (square with an arrow).</li>
+      <li data-t="ios3">Tap <b>Add to Home Screen</b>, then <b>Add</b>.</li></ol></section>
+    <section class="card" data-os="android"><h2>Android <span class="tag" data-t="yours" hidden>Your device</span></h2><ol>
+      <li data-t="and1">Open this page in <b>Chrome</b>.</li>
+      <li data-t="and2">Tap <b>Install the app</b> above, or the <b>⋮</b> menu → <b>Install app</b>.</li>
+      <li data-t="and3">Tap <b>Install</b>.</li></ol></section>
+    <section class="card" data-os="windows"><h2>Windows <span class="tag" data-t="yours" hidden>Your device</span></h2><ol>
+      <li data-t="win1">Open this page in <b>Chrome</b> or <b>Edge</b>.</li>
+      <li data-t="win2">Click <b>Install the app</b> above, or the install icon at the right of the address bar.</li>
+      <li data-t="win3">It appears in the Start menu; right-click to pin it to the taskbar.</li></ol></section>
+    <section class="card" data-os="mac"><h2>Mac <span class="tag" data-t="yours" hidden>Your device</span></h2><ol>
+      <li data-t="mac1"><b>Chrome / Edge:</b> click <b>Install the app</b> above, or the install icon in the address bar.</li>
+      <li data-t="mac2"><b>Safari (macOS Sonoma or later):</b> File → <b>Add to Dock</b>.</li>
+      <li data-t="mac3">Open it from the Dock or Launchpad.</li></ol></section>
+    <section class="card" data-os="linux"><h2>Linux / ChromeOS <span class="tag" data-t="yours" hidden>Your device</span></h2><ol>
+      <li data-t="lin1">Open this page in <b>Chrome</b>, <b>Edge</b> or <b>Chromium</b>.</li>
+      <li data-t="lin2">Click <b>Install the app</b> above, or the install icon in the address bar.</li>
+      <li data-t="lin3">It appears in your applications menu.</li></ol></section>
+  </div>
+  <p class="note" data-t="note">The app updates itself. Sign in the same way as on the website: your INOVEX Google account, or the email code if an administrator invited you without an INOVEX email. Help: info@inovex-group.com or h.musaimi@inovex-group.com.</p>
+</main>
+<script>
+(function () {
+  var AR = {
+    title: 'تثبيت تطبيق مهام إينوفكس', sub: 'استخدم مدير المهام كتطبيق على هاتفك أو حاسوبك.', install: 'ثبّت التطبيق',
+    done: 'تم تثبيت التطبيق. ابحث عن «INOVEX Tasks» في الشاشة الرئيسية أو قائمة التطبيقات.', open: 'فتح دون تثبيت', yours: 'جهازك',
+    ios1: 'افتح هذه الصفحة في <b>Safari</b>.', ios2: 'اضغط زر <b>المشاركة</b> (مربع بسهم).', ios3: 'اختر <b>إضافة إلى الشاشة الرئيسية</b> ثم <b>إضافة</b>.',
+    and1: 'افتح هذه الصفحة في <b>Chrome</b>.', and2: 'اضغط <b>ثبّت التطبيق</b> في الأعلى، أو قائمة <b>⋮</b> ← <b>تثبيت التطبيق</b>.', and3: 'اضغط <b>تثبيت</b>.',
+    win1: 'افتح هذه الصفحة في <b>Chrome</b> أو <b>Edge</b>.', win2: 'اضغط <b>ثبّت التطبيق</b> في الأعلى، أو أيقونة التثبيت يمين شريط العنوان.', win3: 'يظهر في قائمة ابدأ؛ انقر بزر الفأرة الأيمن لتثبيته في شريط المهام.',
+    mac1: '<b>Chrome / Edge:</b> اضغط <b>ثبّت التطبيق</b> في الأعلى أو أيقونة التثبيت في شريط العنوان.', mac2: '<b>Safari (macOS Sonoma أو أحدث):</b> ملف ← <b>إضافة إلى Dock</b>.', mac3: 'افتحه من Dock أو Launchpad.',
+    lin1: 'افتح هذه الصفحة في <b>Chrome</b> أو <b>Edge</b> أو <b>Chromium</b>.', lin2: 'اضغط <b>ثبّت التطبيق</b> في الأعلى، أو أيقونة التثبيت في شريط العنوان.', lin3: 'يظهر في قائمة التطبيقات.',
+    note: 'يتحدث التطبيق تلقائياً. سجّل الدخول كما في الموقع: حساب Google لإينوفكس، أو رمز البريد إذا دعاك المسؤول بدون بريد إينوفكس. للمساعدة: info@inovex-group.com أو h.musaimi@inovex-group.com.'
+  };
+  var EN = {}; document.querySelectorAll('[data-t]').forEach(function (el) { EN[el.dataset.t] = el.innerHTML; });
+  var lang = 'en'; try { lang = JSON.parse(localStorage.getItem('inovex-tm:lang')) || (/^ar/i.test(navigator.language) ? 'ar' : 'en'); } catch (e) {}
+  function apply() {
+    document.documentElement.lang = lang; document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-t]').forEach(function (el) { el.innerHTML = (lang === 'ar' ? AR : EN)[el.dataset.t]; });
+    document.getElementById('lang').textContent = lang === 'ar' ? 'English' : 'العربية';
+  }
+  document.getElementById('lang').onclick = function () { lang = lang === 'ar' ? 'en' : 'ar'; try { localStorage.setItem('inovex-tm:lang', JSON.stringify(lang)); } catch (e) {} apply(); };
+  apply();
+  // Highlight this device's instructions
+  var ua = navigator.userAgent, os = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ? 'ios'
+    : /Android/.test(ua) ? 'android' : /Windows/.test(ua) ? 'windows' : /Mac/.test(ua) ? 'mac' : 'linux';
+  var mine = document.querySelector('[data-os="' + os + '"]');
+  if (mine) { mine.classList.add('mine'); mine.querySelector('.tag').hidden = false; mine.parentNode.prepend(mine); }
+  // One-tap install where the browser supports it
+  var deferred = null, btn = document.getElementById('installBtn');
+  window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; btn.hidden = false; });
+  btn.onclick = function () { if (!deferred) return; deferred.prompt(); deferred.userChoice.finally(function () { deferred = null; btn.hidden = true; }); };
+  window.addEventListener('appinstalled', function () { btn.hidden = true; document.getElementById('installed').hidden = false; });
+  if (matchMedia('(display-mode: standalone)').matches || navigator.standalone) document.getElementById('installed').hidden = false;
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(function () {});
+})();
+</script>
+</body>
+</html>

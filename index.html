@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>INOVEX Task Manager</title>
+<meta name="description" content="INOVEX management team task manager.">
+<meta name="theme-color" content="#121212">
+<meta name="robots" content="noindex, nofollow">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="INOVEX Tasks">
+<style>
+  html,body{margin:0;height:100%;background:#121212;color:#ECEDEF;font:14px/1.5 'Segoe UI',Roboto,Arial,sans-serif;overflow:hidden}
+  #app{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;bottom:0;width:100%;height:calc(100% - env(safe-area-inset-top,0px));border:0;background:#121212}
+  #splash{position:fixed;inset:0;display:grid;place-items:center;text-align:center;background:#121212;z-index:2;transition:opacity .3s}
+  #splash img{width:92px;height:92px;border-radius:20px}
+  .spin{width:26px;height:26px;border:3px solid #2A2D31;border-top-color:#D4AF37;border-radius:50%;animation:sp .9s linear infinite;margin:18px auto 10px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  #help{display:none;margin-top:14px;font-size:13px;color:#A3A8B0;max-width:320px}
+  #help a{color:#D4AF37}
+  .btn{display:inline-block;margin-top:10px;padding:9px 16px;border-radius:8px;background:#D4AF37;color:#121212;font-weight:600;text-decoration:none}
+  @media (prefers-reduced-motion:reduce){.spin{animation:none}}
+</style>
+</head>
+<body>
+<div id="splash">
+  <div>
+    <img src="/icons/icon-192.png" alt="INOVEX">
+    <div class="spin" aria-hidden="true"></div>
+    <div id="msg">Opening INOVEX Task Manager…</div>
+    <div id="help">
+      Taking longer than usual?<br>
+      <a class="btn" id="full" href="#">Open in full window</a><br>
+      <span style="display:block;margin-top:10px">If Google asks you to sign in, use your INOVEX account, or the email code if you were invited without one.</span>
+    </div>
+  </div>
+</div>
+<script src="/config.js"></script>
+<script>
+(function () {
+  var APP = window.TM_CONFIG.appUrl + '?host=app';
+  var full = document.getElementById('full'); full.href = APP;
+  var splash = document.getElementById('splash'), help = document.getElementById('help');
+  var frame = document.createElement('iframe');
+  frame.id = 'app'; frame.title = 'INOVEX Task Manager';
+  frame.allow = 'clipboard-read; clipboard-write; fullscreen';
+  frame.src = APP;
+  document.body.appendChild(frame);
+  var done = false;
+  function hide() { if (done) return; done = true; splash.style.opacity = '0'; setTimeout(function () { splash.style.display = 'none'; }, 320); }
+  // The portal tells us when it has drawn (ready / sign-in screen / error).
+  window.addEventListener('message', function (e) {
+    var ok = /(^https:\/\/script\.google\.com$)|(\.googleusercontent\.com$)/.test(e.origin);
+    if (!ok || !e.data || e.data.type !== 'inovex-tm') return;
+    if (e.data.state === 'top') { location.href = APP; return; }   // the portal asks for a full window (e.g. Google sign-in)
+    hide();
+  });
+  // No answer in 12 s (offline Google, blocked sign-in cookies) → offer the full window.
+  setTimeout(function () { if (!done) help.style.display = 'block'; }, 12000);
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(function () {});
+})();
+</script>
+</body>
+</html>
