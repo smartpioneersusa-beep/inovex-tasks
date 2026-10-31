@@ -15,53 +15,43 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="INOVEX Tasks">
 <style>
-  html,body{margin:0;height:100%;background:#121212;color:#ECEDEF;font:14px/1.5 'Segoe UI',Roboto,Arial,sans-serif;overflow:hidden}
-  #app{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;bottom:0;width:100%;height:calc(100% - env(safe-area-inset-top,0px));border:0;background:#121212}
-  #splash{position:fixed;inset:0;display:grid;place-items:center;text-align:center;background:#121212;z-index:2;transition:opacity .3s}
-  #splash img{width:92px;height:92px;border-radius:20px}
-  .spin{width:26px;height:26px;border:3px solid #2A2D31;border-top-color:#D4AF37;border-radius:50%;animation:sp .9s linear infinite;margin:18px auto 10px}
+  html,body{margin:0;height:100%;background:#121212;color:#ECEDEF;font:14px/1.5 'Segoe UI',Roboto,Arial,sans-serif}
+  body{display:grid;place-items:center;text-align:center;padding:24px;box-sizing:border-box}
+  img{width:92px;height:92px;border-radius:20px}
+  .spin{width:26px;height:26px;border:3px solid #2A2D31;border-top-color:#C9A227;border-radius:50%;animation:sp .9s linear infinite;margin:18px auto 10px}
   @keyframes sp{to{transform:rotate(360deg)}}
-  #help{display:none;margin-top:14px;font-size:13px;color:#A3A8B0;max-width:320px}
-  #help a{color:#D4AF37}
-  .btn{display:inline-block;margin-top:10px;padding:9px 16px;border-radius:8px;background:#D4AF37;color:#121212;font-weight:600;text-decoration:none}
+  #help{display:none;margin-top:14px;font-size:13px;color:#A3A8B0;max-width:340px}
+  .btn{display:inline-block;margin-top:10px;padding:10px 18px;border-radius:8px;background:#C9A227;color:#121212;font-weight:600;text-decoration:none;border:0;font-size:14px;cursor:pointer}
   @media (prefers-reduced-motion:reduce){.spin{animation:none}}
 </style>
 </head>
 <body>
-<div id="splash">
-  <div>
-    <img src="./icons/icon-192.png" alt="INOVEX">
-    <div class="spin" aria-hidden="true"></div>
-    <div id="msg">Opening INOVEX Task Manager…</div>
-    <div id="help">
-      Taking longer than usual?<br>
-      <a class="btn" id="full" href="#">Open in full window</a><br>
-      <span style="display:block;margin-top:10px">If Google asks you to sign in, use your INOVEX account, or the email code if you were invited without one.</span>
-    </div>
+<div>
+  <img src="./icons/icon-192.png" alt="INOVEX">
+  <div class="spin" aria-hidden="true"></div>
+  <div id="msg">Opening INOVEX Task Manager…</div>
+  <div id="help">
+    <span id="why"></span><br>
+    <a class="btn" id="go" href="#">Open INOVEX Task Manager</a>
   </div>
 </div>
 <script src="./config.js"></script>
 <script>
 (function () {
-  var APP = window.TM_CONFIG.appUrl + '?host=app';
-  var full = document.getElementById('full'); full.href = APP;
-  var splash = document.getElementById('splash'), help = document.getElementById('help');
-  var frame = document.createElement('iframe');
-  frame.id = 'app'; frame.title = 'INOVEX Task Manager';
-  frame.allow = 'clipboard-read; clipboard-write; fullscreen';
-  frame.src = APP;
-  document.body.appendChild(frame);
-  var done = false;
-  function hide() { if (done) return; done = true; splash.style.opacity = '0'; setTimeout(function () { splash.style.display = 'none'; }, 320); }
-  // The portal tells us when it has drawn (ready / sign-in screen / error).
-  window.addEventListener('message', function (e) {
-    var ok = /(^https:\/\/script\.google\.com$)|(\.googleusercontent\.com$)/.test(e.origin);
-    if (!ok || !e.data || e.data.type !== 'inovex-tm') return;
-    if (e.data.state === 'top') { location.href = APP; return; }   // the portal asks for a full window (e.g. Google sign-in)
-    hide();
-  });
-  // No answer in 12 s (offline Google, blocked sign-in cookies) → offer the full window.
-  setTimeout(function () { if (!done) help.style.display = 'block'; }, 12000);
+  // The portal opens directly in this window (no frame), so Google sign-in works like in the browser.
+  var APP = window.TM_CONFIG.appUrl;
+  var ar = false; try { ar = (JSON.parse(localStorage.getItem('inovex-tm:lang')) || (/^ar/i.test(navigator.language) ? 'ar' : 'en')) === 'ar'; } catch (e) {}
+  if (ar) { document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl'; document.getElementById('msg').textContent = 'جارٍ فتح مدير مهام إينوفكس…'; document.getElementById('go').textContent = 'افتح مدير مهام إينوفكس'; }
+  var go = document.getElementById('go'); go.href = APP;
+  function open() { location.replace(APP); }
+  function help(text) { document.getElementById('why').textContent = text; document.getElementById('help').style.display = 'block'; }
+  if (navigator.onLine === false) {
+    help(ar ? 'لا يوجد اتصال بالإنترنت. اتصل ثم اضغط الزر.' : 'You are offline. Connect to the internet, then tap the button.');
+    window.addEventListener('online', open);
+  } else {
+    open();
+    setTimeout(function () { help(ar ? 'إذا لم تفتح الصفحة، اضغط الزر.' : 'If nothing opens, tap the button.'); }, 6000);
+  }
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(function () {});
 })();
 </script>
