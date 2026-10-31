@@ -6,9 +6,9 @@
 <title>Install INOVEX Tasks</title>
 <meta name="theme-color" content="#121212">
 <meta name="robots" content="noindex, nofollow">
-<link rel="manifest" href="/manifest.webmanifest">
-<link rel="icon" href="/icons/favicon-32.png" sizes="32x32">
-<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
 <style>
   :root{--bg:#EEF0F2;--surface:#fff;--ink:#16181B;--muted:#5A5F67;--line:#D9DCE1;--gold:#C9A227;--gold-ink:#86690C}
   @media (prefers-color-scheme:dark){:root{--bg:#0E0F10;--surface:#17191B;--ink:#E7E8EA;--muted:#A1A6AE;--line:#2A2D31;--gold:#D4AF37;--gold-ink:#E2C25B}}
@@ -36,13 +36,13 @@
 </style>
 </head>
 <body>
-<header><div class="wrap"><img src="/icons/icon-192.png" alt="INOVEX"><div><h1 data-t="title">Install INOVEX Tasks</h1><p data-t="sub">Use the Task Manager as an app on your phone or computer.</p></div>
+<header><div class="wrap"><img src="./icons/icon-192.png" alt="INOVEX"><div><h1 data-t="title">Install INOVEX Tasks</h1><p data-t="sub">Use the Task Manager as an app on your phone or computer.</p></div>
   <button class="lang" id="lang" type="button">العربية</button></div></header>
 <main class="wrap">
   <div class="cta">
     <button class="btn" id="installBtn" hidden data-t="install">Install the app</button>
     <span id="installed" hidden data-t="done">The app is installed. Look for “INOVEX Tasks” on your home screen or apps list.</span>
-    <a class="btn ghost" href="/" data-t="open">Open without installing</a>
+    <a class="btn ghost" href="./" data-t="open">Open without installing</a>
   </div>
   <div class="grid">
     <section class="card" data-os="ios"><h2>iPhone / iPad <span class="tag" data-t="yours" hidden>Your device</span></h2><ol>
@@ -100,7 +100,7 @@
   btn.onclick = function () { if (!deferred) return; deferred.prompt(); deferred.userChoice.finally(function () { deferred = null; btn.hidden = true; }); };
   window.addEventListener('appinstalled', function () { btn.hidden = true; document.getElementById('installed').hidden = false; });
   if (matchMedia('(display-mode: standalone)').matches || navigator.standalone) document.getElementById('installed').hidden = false;
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(function () {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(function () {});
 })();
 </script>
 </body>

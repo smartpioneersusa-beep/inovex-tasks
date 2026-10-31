@@ -7,9 +7,9 @@
 <meta name="description" content="INOVEX management team task manager.">
 <meta name="theme-color" content="#121212">
 <meta name="robots" content="noindex, nofollow">
-<link rel="manifest" href="/manifest.webmanifest">
-<link rel="icon" href="/icons/favicon-32.png" sizes="32x32">
-<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -30,7 +30,7 @@
 <body>
 <div id="splash">
   <div>
-    <img src="/icons/icon-192.png" alt="INOVEX">
+    <img src="./icons/icon-192.png" alt="INOVEX">
     <div class="spin" aria-hidden="true"></div>
     <div id="msg">Opening INOVEX Task Manager…</div>
     <div id="help">
@@ -40,7 +40,7 @@
     </div>
   </div>
 </div>
-<script src="/config.js"></script>
+<script src="./config.js"></script>
 <script>
 (function () {
   var APP = window.TM_CONFIG.appUrl + '?host=app';
@@ -62,7 +62,7 @@
   });
   // No answer in 12 s (offline Google, blocked sign-in cookies) → offer the full window.
   setTimeout(function () { if (!done) help.style.display = 'block'; }, 12000);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(function () {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(function () {});
 })();
 </script>
 </body>
