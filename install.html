@@ -44,6 +44,7 @@
     <button class="btn" id="installBtn" hidden data-t="install">Install the app</button>
     <span id="installed" hidden data-t="done">The app is installed. Look for “INOVEX Tasks” on your home screen or apps list.</span>
     <a class="btn ghost" href="./" data-t="open">Open without installing</a>
+    <a class="btn ghost" href="./?choose=1" data-t="chg">Change sign-in type</a>
   </div>
   <div class="grid">
     <section class="card" data-os="ios"><h2>iPhone / iPad <span class="tag" data-t="yours" hidden>Your device</span></h2><ol>
@@ -69,7 +70,7 @@
   </div>
   <section class="card help"><h2 data-t="tsh">If signing in does not work</h2><ul>
     <li data-t="ts1"><b>Update the app first:</b> close it completely and open it again (it updates itself on the next start).</li>
-    <li data-t="ts2"><b>Several Google accounts:</b> Google opens the portal with your first account. Sign in to Chrome or Edge with your INOVEX account only, or use a separate browser profile for INOVEX, then install the app from that profile.</li>
+    <li data-t="ts2"><b>Sign-in keeps coming back:</b> make sure you chose <b>INOVEX staff</b> when the app first opened (or tap <b>Change sign-in type</b>). On the portal, use <b>Sign in with my INOVEX Google account</b>; if it still returns, tap <b>Add my INOVEX account</b> and sign in once.</li>
     <li data-t="ts3"><b>Android:</b> the app uses Chrome's sign-in. Open Chrome, sign in at google.com with your INOVEX account, then open the app.</li>
     <li data-t="ts4"><b>Invited without an INOVEX email:</b> choose <b>Sign in with an email code</b> and use the exact address the administrator added.</li>
     <li data-t="ts5"><b>Installed before 31/10/2026:</b> uninstall the old app and install it again from this page.</li></ul></section>
@@ -79,14 +80,14 @@
 (function () {
   var AR = {
     title: 'تثبيت تطبيق مهام إينوفكس', sub: 'استخدم مدير المهام كتطبيق على هاتفك أو حاسوبك.', install: 'ثبّت التطبيق',
-    done: 'تم تثبيت التطبيق. ابحث عن «INOVEX Tasks» في الشاشة الرئيسية أو قائمة التطبيقات.', open: 'فتح دون تثبيت', yours: 'جهازك',
+    done: 'تم تثبيت التطبيق. ابحث عن «INOVEX Tasks» في الشاشة الرئيسية أو قائمة التطبيقات.', open: 'فتح دون تثبيت', chg: 'تغيير طريقة تسجيل الدخول', yours: 'جهازك',
     ios1: 'افتح هذه الصفحة في <b>Safari</b>.', ios2: 'اضغط زر <b>المشاركة</b> (مربع بسهم).', ios3: 'اختر <b>إضافة إلى الشاشة الرئيسية</b> ثم <b>إضافة</b>.',
     and1: 'افتح هذه الصفحة في <b>Chrome</b>.', and2: 'اضغط <b>ثبّت التطبيق</b> في الأعلى، أو قائمة <b>⋮</b> ← <b>تثبيت التطبيق</b>.', and3: 'اضغط <b>تثبيت</b>.',
     win1: 'افتح هذه الصفحة في <b>Chrome</b> أو <b>Edge</b>.', win2: 'اضغط <b>ثبّت التطبيق</b> في الأعلى، أو أيقونة التثبيت يمين شريط العنوان.', win3: 'يظهر في قائمة ابدأ؛ انقر بزر الفأرة الأيمن لتثبيته في شريط المهام.',
     mac1: '<b>Chrome / Edge:</b> اضغط <b>ثبّت التطبيق</b> في الأعلى أو أيقونة التثبيت في شريط العنوان.', mac2: '<b>Safari (macOS Sonoma أو أحدث):</b> ملف ← <b>إضافة إلى Dock</b>.', mac3: 'افتحه من Dock أو Launchpad.',
     lin1: 'افتح هذه الصفحة في <b>Chrome</b> أو <b>Edge</b> أو <b>Chromium</b>.', lin2: 'اضغط <b>ثبّت التطبيق</b> في الأعلى، أو أيقونة التثبيت في شريط العنوان.', lin3: 'يظهر في قائمة التطبيقات.',
     tsh: 'إذا لم يعمل تسجيل الدخول', ts1: '<b>حدّث التطبيق أولاً:</b> أغلقه تماماً ثم افتحه مجدداً (يتحدث تلقائياً عند التشغيل التالي).',
-    ts2: '<b>عدة حسابات Google:</b> تفتح Google البوابة بحسابك الأول. سجّل الدخول إلى Chrome أو Edge بحساب إينوفكس فقط، أو استخدم ملفاً شخصياً منفصلاً للمتصفح، ثم ثبّت التطبيق منه.',
+    ts2: '<b>تعود صفحة الدخول باستمرار:</b> تأكد أنك اخترت <b>موظف إينوفكس</b> عند أول فتح للتطبيق (أو اضغط <b>تغيير طريقة تسجيل الدخول</b>). في البوابة استخدم <b>تسجيل الدخول بحساب Google الخاص بإينوفكس</b>؛ وإذا عادت الصفحة اضغط <b>أضف حساب إينوفكس</b> وسجّل الدخول مرة واحدة.',
     ts3: '<b>Android:</b> يستخدم التطبيق تسجيل الدخول في Chrome. افتح Chrome وسجّل الدخول في google.com بحساب إينوفكس، ثم افتح التطبيق.',
     ts4: '<b>مدعو بدون بريد إينوفكس:</b> اختر <b>تسجيل الدخول برمز البريد</b> واستخدم العنوان نفسه الذي أضافه المسؤول.',
     ts5: '<b>ثبّتّ التطبيق قبل 31/10/2026:</b> احذف التطبيق القديم وثبّته مجدداً من هذه الصفحة.',

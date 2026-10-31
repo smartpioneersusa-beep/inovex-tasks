@@ -18,6 +18,7 @@
     { "src": "./icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ],
   "shortcuts": [
+    { "name": "Change sign-in type", "short_name": "Sign-in type", "url": "./?choose=1", "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }] },
     { "name": "Install help", "short_name": "Help", "url": "./install.html", "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }] }
   ]
 }

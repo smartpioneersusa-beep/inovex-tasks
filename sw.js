@@ -1,6 +1,6 @@
 /* INOVEX Task Manager — offline helper. Keeps the app shell available and shows a friendly page offline.
    The task data itself always comes live from Google; nothing private is cached. */
-const CACHE = 'inovex-tm-v2';
+const CACHE = 'inovex-tm-v3';
 const SHELL = ['./', './index.html', './install.html', './offline.html', './config.js', './manifest.webmanifest',
   './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png', './icons/apple-touch-icon.png', './icons/favicon-32.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
