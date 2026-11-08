@@ -33,6 +33,23 @@
   .note{color:var(--muted);font-size:13.5px;margin-top:16px}
   .card.help{margin-top:12px}.card.help ul{margin:8px 0 0;padding-inline-start:20px}.card.help li{margin:6px 0}
   [hidden]{display:none!important}
+  .ios{background:var(--surface);border:2px solid var(--gold);border-radius:14px;padding:16px;margin-bottom:18px}
+  .ios h2{margin:0 0 4px;font-size:18px}.ios .lead{margin:0 0 12px;color:var(--muted);font-size:14px}
+  .steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .steps li{display:flex;gap:12px;align-items:center;background:var(--bg);border-radius:10px;padding:10px 12px}
+  .steps .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#121212;font-weight:800;display:grid;place-items:center;font-size:14px}
+  .steps .g{flex:none;width:34px;height:34px;border-radius:9px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;color:#0A84FF}
+  .steps .g svg{width:22px;height:22px}
+  .alt{margin-top:12px;font-size:13.5px;color:var(--muted)}.alt summary{cursor:pointer;color:var(--gold-ink);font-weight:600}
+  .warn{background:#FFF4D6;color:#5C4500;border-radius:10px;padding:10px 12px;margin:0 0 12px;font-size:14px}
+  @media (prefers-color-scheme:dark){.warn{background:#3A3010;color:#F3DFA0}}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .pointer{position:fixed;left:50%;bottom:calc(10px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:9;background:#121212;color:#fff;border:1px solid var(--gold);border-radius:12px;padding:9px 14px;font-size:13.5px;box-shadow:0 8px 24px rgba(0,0,0,.35);width:max-content;max-width:min(300px,calc(100% - 32px));text-align:center}
+  body.ptr main{padding-bottom:110px}
+  .pointer:after{content:'';position:absolute;bottom:-8px;right:28px;border:8px solid transparent;border-bottom:0;border-top-color:var(--gold)}
+  .pointer.top{bottom:auto;top:calc(10px + env(safe-area-inset-top))}.pointer.top:after{bottom:auto;top:-8px;border-top:0;border-bottom:8px solid var(--gold);border-left-color:transparent;border-right-color:transparent}
+  .pointer button{background:none;border:0;color:#A3A8B0;margin-inline-start:8px;font-size:15px;cursor:pointer}
+  @media (prefers-reduced-motion:no-preference){.pointer{animation:bob 1.6s ease-in-out infinite}@keyframes bob{50%{transform:translate(-50%,-5px)}}}
   @media (max-width:640px){.grid{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
@@ -40,6 +57,36 @@
 <header><div class="wrap"><img src="./icons/icon-192.png" alt="INOVEX"><div><h1 data-t="title">Install INOVEX Tasks</h1><p data-t="sub">Use the Task Manager as an app on your phone or computer.</p></div>
   <button class="lang" id="lang" type="button">العربية</button></div></header>
 <main class="wrap">
+  <section class="ios" id="iosBox" hidden>
+    <h2 data-t="iosH">Add INOVEX Tasks to your iPhone</h2>
+    <p class="lead" data-t="iosLead">iPhone has no install button: you add the app from Safari's Share menu. It takes 4 taps.</p>
+    <div class="warn" id="iosInApp" hidden>
+      <span data-t="inapp">This page is open inside another app (WhatsApp, Gmail, Outlook, LinkedIn…). Apps can't be added from here. Open this page in Safari first:</span>
+      <div class="row"><button class="btn" id="copyLink" type="button" data-t="copy">Copy the link</button></div>
+      <div data-t="inapp2" style="margin-top:8px">Then open <b>Safari</b>, tap the address bar, paste and go. Or tap the app's <b>⋯</b> / compass button and choose <b>Open in Safari</b>.</div>
+    </div>
+    <ol class="steps" id="steps26">
+      <li><span class="n">1</span><span class="g" data-g="dots"></span><span data-t="s26a">Tap <b>⋯</b> (three dots) next to the address bar.</span></li>
+      <li><span class="n">2</span><span class="g" data-g="share"></span><span data-t="s26b">Tap <b>Share</b>.</span></li>
+      <li><span class="n">3</span><span class="g" data-g="add"></span><span data-t="s26c">Scroll down and tap <b>Add to Home Screen</b> (if you don't see it, tap <b>View More</b> / <b>More</b>).</span></li>
+      <li><span class="n">4</span><span class="g" data-g="ok"></span><span data-t="s26d">Keep <b>Open as Web App</b> on, then tap <b>Add</b>. The INOVEX Tasks icon appears on your home screen.</span></li>
+    </ol>
+    <ol class="steps" id="stepsOld" hidden>
+      <li><span class="n">1</span><span class="g" data-g="share"></span><span data-t="o1">Tap the <b>Share</b> button (square with an arrow) in Safari's bar.</span></li>
+      <li><span class="n">2</span><span class="g" data-g="add"></span><span data-t="o2">Scroll down and tap <b>Add to Home Screen</b>.</span></li>
+      <li><span class="n">3</span><span class="g" data-g="ok"></span><span data-t="o3">Tap <b>Add</b>. The INOVEX Tasks icon appears on your home screen.</span></li>
+    </ol>
+    <ol class="steps" id="stepsChrome" hidden>
+      <li><span class="n">1</span><span class="g" data-g="share"></span><span data-t="c1">In Chrome or Edge, tap the <b>Share</b> button in the address bar (top right).</span></li>
+      <li><span class="n">2</span><span class="g" data-g="add"></span><span data-t="c2">Tap <b>Add to Home Screen</b> (scroll or tap <b>More</b> if needed).</span></li>
+      <li><span class="n">3</span><span class="g" data-g="ok"></span><span data-t="c3">Tap <b>Add</b>. If you don't see Add to Home Screen, open this page in <b>Safari</b> instead.</span></li>
+    </ol>
+    <details class="alt"><summary data-t="other">Different screen? Steps for other iPhone versions</summary>
+      <p data-t="otherTxt"><b>iOS 26 and later:</b> ⋯ → Share → Add to Home Screen → Add. <b>iOS 18 and earlier:</b> Share button (square with arrow, bottom bar on iPhone, top bar on iPad) → Add to Home Screen → Add. <b>Chrome / Edge on iPhone:</b> Share button in the address bar → Add to Home Screen. Needs iOS 16.4 or later for Chrome/Edge; Safari works on all versions.</p>
+      <p data-t="otherTxt2"><b>First start:</b> open the new icon, choose <b>INOVEX staff</b> (or <b>Invited</b>), and sign in once with your INOVEX Google account. The app keeps you signed in. If signing in keeps coming back, delete the icon and add it again with <b>Open as Web App</b> turned <b>off</b>: it then opens in Safari with Safari's sign-in.</p>
+    </details>
+  </section>
+  <div class="pointer" id="pointer" hidden><span data-t="ptr">Tap ⋯ below, then Share → Add to Home Screen</span><button type="button" id="ptrX" aria-label="Close">✕</button></div>
   <div class="cta">
     <button class="btn" id="installBtn" hidden data-t="install">Install the app</button>
     <span id="installed" hidden data-t="done">The app is installed. Look for “INOVEX Tasks” on your home screen or apps list.</span>
@@ -48,9 +95,9 @@
   </div>
   <div class="grid">
     <section class="card" data-os="ios"><h2>iPhone / iPad <span class="tag" data-t="yours" hidden>Your device</span></h2><ol>
-      <li data-t="ios1">Open this page in <b>Safari</b>.</li>
-      <li data-t="ios2">Tap the <b>Share</b> button (square with an arrow).</li>
-      <li data-t="ios3">Tap <b>Add to Home Screen</b>, then <b>Add</b>.</li></ol></section>
+      <li data-t="ios1">Open this page in <b>Safari</b> (not inside WhatsApp, Gmail or another app).</li>
+      <li data-t="ios2"><b>iOS 26 or later:</b> tap <b>⋯</b> next to the address bar → <b>Share</b>. <b>Older iOS:</b> tap the <b>Share</b> button (square with an arrow).</li>
+      <li data-t="ios3">Scroll down, tap <b>Add to Home Screen</b>, keep <b>Open as Web App</b> on, then tap <b>Add</b>.</li></ol></section>
     <section class="card" data-os="android"><h2>Android <span class="tag" data-t="yours" hidden>Your device</span></h2><ol>
       <li data-t="and1">Open this page in <b>Chrome</b>.</li>
       <li data-t="and2">Tap <b>Install the app</b> above, or the <b>⋮</b> menu → <b>Install app</b>.</li>
@@ -81,7 +128,17 @@
   var AR = {
     title: 'تثبيت تطبيق مهام إينوفكس', sub: 'استخدم مدير المهام كتطبيق على هاتفك أو حاسوبك.', install: 'ثبّت التطبيق',
     done: 'تم تثبيت التطبيق. ابحث عن «INOVEX Tasks» في الشاشة الرئيسية أو قائمة التطبيقات.', open: 'فتح دون تثبيت', chg: 'تغيير طريقة تسجيل الدخول', yours: 'جهازك',
-    ios1: 'افتح هذه الصفحة في <b>Safari</b>.', ios2: 'اضغط زر <b>المشاركة</b> (مربع بسهم).', ios3: 'اختر <b>إضافة إلى الشاشة الرئيسية</b> ثم <b>إضافة</b>.',
+    ios1: 'افتح هذه الصفحة في <b>Safari</b> (وليس داخل واتساب أو Gmail أو تطبيق آخر).', ios2: '<b>iOS 26 أو أحدث:</b> اضغط <b>⋯</b> بجانب شريط العنوان ← <b>مشاركة</b>. <b>الإصدارات الأقدم:</b> اضغط زر <b>المشاركة</b> (مربع بسهم).', ios3: 'مرّر للأسفل واختر <b>إضافة إلى الشاشة الرئيسية</b>، أبقِ <b>فتح كتطبيق ويب</b> مفعّلاً، ثم اضغط <b>إضافة</b>.',
+    iosH: 'أضف مهام إينوفكس إلى الآيفون', iosLead: 'لا يوجد زر تثبيت في الآيفون؛ تُضاف التطبيقات من قائمة المشاركة في Safari. أربع ضغطات فقط.',
+    inapp: 'هذه الصفحة مفتوحة داخل تطبيق آخر (واتساب، Gmail، Outlook، LinkedIn…) ولا يمكن إضافة التطبيق من هنا. افتح الصفحة في Safari أولاً:', copy: 'انسخ الرابط',
+    inapp2: 'ثم افتح <b>Safari</b> واضغط شريط العنوان والصق الرابط. أو اضغط زر <b>⋯</b> / البوصلة في التطبيق واختر <b>فتح في Safari</b>.',
+    s26a: 'اضغط <b>⋯</b> (ثلاث نقاط) بجانب شريط العنوان.', s26b: 'اضغط <b>مشاركة</b>.', s26c: 'مرّر للأسفل واختر <b>إضافة إلى الشاشة الرئيسية</b> (إن لم تظهر اضغط <b>عرض المزيد</b>).', s26d: 'أبقِ <b>فتح كتطبيق ويب</b> مفعّلاً ثم اضغط <b>إضافة</b>. تظهر أيقونة INOVEX Tasks في الشاشة الرئيسية.',
+    o1: 'اضغط زر <b>المشاركة</b> (مربع بسهم) في شريط Safari.', o2: 'مرّر للأسفل واختر <b>إضافة إلى الشاشة الرئيسية</b>.', o3: 'اضغط <b>إضافة</b>. تظهر أيقونة INOVEX Tasks في الشاشة الرئيسية.',
+    c1: 'في Chrome أو Edge اضغط زر <b>المشاركة</b> في شريط العنوان (أعلى اليمين).', c2: 'اختر <b>إضافة إلى الشاشة الرئيسية</b> (مرّر أو اضغط <b>المزيد</b> عند الحاجة).', c3: 'اضغط <b>إضافة</b>. إن لم تجد الخيار افتح الصفحة في <b>Safari</b>.',
+    other: 'شاشة مختلفة؟ خطوات إصدارات الآيفون الأخرى',
+    otherTxt: '<b>iOS 26 وأحدث:</b> ⋯ ← مشاركة ← إضافة إلى الشاشة الرئيسية ← إضافة. <b>iOS 18 وأقدم:</b> زر المشاركة (مربع بسهم، في الشريط السفلي للآيفون والعلوي للآيباد) ← إضافة إلى الشاشة الرئيسية ← إضافة. <b>Chrome / Edge على الآيفون:</b> زر المشاركة في شريط العنوان ← إضافة إلى الشاشة الرئيسية (يتطلب iOS 16.4 أو أحدث؛ Safari يعمل في كل الإصدارات).',
+    otherTxt2: '<b>أول تشغيل:</b> افتح الأيقونة الجديدة واختر <b>موظف إينوفكس</b> (أو <b>مدعو</b>) وسجّل الدخول مرة واحدة بحساب Google لإينوفكس، ويبقيك التطبيق مسجلاً. إذا تكررت صفحة الدخول احذف الأيقونة وأضفها مجدداً مع إيقاف <b>فتح كتطبيق ويب</b>، فتفتح في Safari بتسجيل دخوله.',
+    ptr: 'اضغط ⋯ في الأسفل ثم مشاركة ← إضافة إلى الشاشة الرئيسية',
     and1: 'افتح هذه الصفحة في <b>Chrome</b>.', and2: 'اضغط <b>ثبّت التطبيق</b> في الأعلى، أو قائمة <b>⋮</b> ← <b>تثبيت التطبيق</b>.', and3: 'اضغط <b>تثبيت</b>.',
     win1: 'افتح هذه الصفحة في <b>Chrome</b> أو <b>Edge</b>.', win2: 'اضغط <b>ثبّت التطبيق</b> في الأعلى، أو أيقونة التثبيت يمين شريط العنوان.', win3: 'يظهر في قائمة ابدأ؛ انقر بزر الفأرة الأيمن لتثبيته في شريط المهام.',
     mac1: '<b>Chrome / Edge:</b> اضغط <b>ثبّت التطبيق</b> في الأعلى أو أيقونة التثبيت في شريط العنوان.', mac2: '<b>Safari (macOS Sonoma أو أحدث):</b> ملف ← <b>إضافة إلى Dock</b>.', mac3: 'افتحه من Dock أو Launchpad.',
@@ -112,7 +169,36 @@
   window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; btn.hidden = false; });
   btn.onclick = function () { if (!deferred) return; deferred.prompt(); deferred.userChoice.finally(function () { deferred = null; btn.hidden = true; }); };
   window.addEventListener('appinstalled', function () { btn.hidden = true; document.getElementById('installed').hidden = false; });
-  if (matchMedia('(display-mode: standalone)').matches || navigator.standalone) document.getElementById('installed').hidden = false;
+  var standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  if (standalone) document.getElementById('installed').hidden = false;
+  // iPhone / iPad: no install prompt exists, so show a step-by-step guide that matches the browser and iOS version.
+  var G = {
+    dots: '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>',
+    share: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="M7.5 7.5 12 3l4.5 4.5"/><path d="M8 10H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-2"/></svg>',
+    add: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/></svg>',
+    ok: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>'
+  };
+  document.querySelectorAll('[data-g]').forEach(function (el) { el.innerHTML = G[el.dataset.g]; });
+  if (os === 'ios' && !standalone) {
+    var box = document.getElementById('iosBox'); box.hidden = false;
+    var other = /CriOS|EdgiOS|FxiOS|OPiOS/.test(ua);
+    var inApp = !other && (!/Safari\//.test(ua) || /FBAN|FBAV|Instagram|LinkedInApp|GSA\/|Line\/|MicroMessenger|Snapchat|Twitter|WhatsApp|Outlook|GmailApp/.test(ua));
+    var v = (ua.match(/Version\/(\d+)/) || [])[1], ios26 = !v || Number(v) >= 26;
+    var ipad = !/iPhone|iPod/.test(ua);
+    if (inApp) document.getElementById('iosInApp').hidden = false;
+    else if (other) { document.getElementById('steps26').hidden = true; document.getElementById('stepsChrome').hidden = false; }
+    else if (!ios26) { document.getElementById('steps26').hidden = true; document.getElementById('stepsOld').hidden = false; }
+    if (!inApp && !other && !ipad) {   // a floating hint pointing at Safari's bottom bar
+      var pt = document.getElementById('pointer'); pt.hidden = false; document.body.classList.add('ptr');
+      if (!ios26) pt.querySelector('span').innerHTML = lang === 'ar' ? 'اضغط زر المشاركة في الأسفل ثم إضافة إلى الشاشة الرئيسية' : 'Tap the Share button below, then Add to Home Screen';
+      document.getElementById('ptrX').onclick = function () { pt.hidden = true; };
+    }
+    document.getElementById('copyLink').onclick = function () {
+      var url = location.href.split('#')[0], b = this, done = function () { b.textContent = lang === 'ar' ? 'تم النسخ ✓' : 'Copied ✓'; };
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function () { prompt('', url); }); else prompt('', url);
+    };
+    box.parentNode.insertBefore(box, box.parentNode.firstChild);
+  }
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(function () {});
 })();
 </script>
